@@ -474,6 +474,7 @@ int markdown_analyse(cstring_t *text, int prev) {
     if((offset < CODE_INDENT || !CHECK_BIT(prev, IS_CODE)) &&
        (!wcsncmp(&text->value[offset], L"<br>", 4) ||
         !wcsncmp(&text->value[offset], L"<BR>", 4) ||
+        !wcsncmp(&text->value[offset], L"\r. . .\r", 7) ||
         !wcsncmp(&text->value[offset], L"^", 1))) {
         SET_BIT(bits, IS_STOP);
         return bits;
